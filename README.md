@@ -17,45 +17,6 @@
 .
 ```
 
-## 工具库开发规范
-
-```
-(function () {
-   $.extend({
-       // 获取cookie、设置cookie
-       cookie: function (name,value,time) {
-           if(value == undefined){
-               var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-               if(arr=document.cookie.match(reg))
-                   return unescape(arr[2]);
-               else
-                   return null;
-           }
-           var time = time || 30;
-           var exp = new Date();
-           exp.setTime(exp.getTime() + time*24*60*60*1000);
-           document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
-       },
-   })
-   $.fn.checked = function(isCheck){
-       if(isCheck){
-           return this.prop('checked',true);
-       }else{
-           return this.prop('checked',false);
-       }
-   }
-   Array.prototype.realPush = function (value) {
-       var self = this;
-       for(var i in self){
-           if(self[i]==value){
-               return;
-           }
-       }
-       self.push(value)
-   }
-})()
-
-```
 
 ## 工具库使用文档->utils->index.js
 
@@ -146,17 +107,4 @@ $('.pagination').pagination({
 > *  currentPage 当前页
 > *  currentPage  页码变化时候的页码数
 
- 返回顶部
- 
-```
-$.goTop({
-    speed: 200,
-    y: 800,
-    addHtml: '.test'
-})
-```
- 
- > * speed 默认为200,返回顶部的速度，数值越高，返回顶部速度越快
- > * y 默认为800，滚动条距离顶端距离，当大于这个距离时，返回顶部显示
- > * addHtml,  默认是个小火箭图标，填写可以绑定自己写的dom元素
  
